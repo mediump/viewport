@@ -13,5 +13,4 @@ void GLFWWindow::pollEvents() { glfwPollEvents(); }
 void GLFWWindow::destroy() {
   glfwDestroyWindow(m_glfwHandle);
   m_glfwHandle = nullptr;
-  glfwTerminate();
 }
