@@ -6,7 +6,7 @@
 using namespace V3D;
 
 Window::Window(const WindowType type, int width, int height, const std::string& title)
-  : m_type(type)
+  : m_type(type), m_shouldClose(false)
 {
   switch (m_type)
   {
