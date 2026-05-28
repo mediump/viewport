@@ -2,7 +2,7 @@
 
 #include "Interface/IWindow.hpp"
 
-#include <GLFW/glfw3.h>
+struct GLFWwindow;
 
 namespace V3D::Private {
 
@@ -12,6 +12,8 @@ class GLFWWindow : public IWindow {
 public:
   GLFWWindow(int width, int height, const std::string &title);
   ~GLFWWindow() override = default;
+
+  bool shouldClose() override;
 
   void pollEvents() override;
   void destroy() override;

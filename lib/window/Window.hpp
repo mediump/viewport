@@ -2,13 +2,13 @@
 
 #include "Interface/IContextObject.hpp"
 #include "Interface/IWindow.hpp"
-#include "RenderingServer.hpp"
+#include "Objects/WindowObjects.hpp"
 
 #include <memory>
 
 // clang-format off
 
-#define _V3D_WINDOW_ARGS    \
+#define V3D_WINDOW_ARGS    \
   int width,                \
   int height,               \
   const std::string &title
@@ -18,12 +18,16 @@
 namespace V3D {
 
 class Window : public IContextObject {
-  std::weak_ptr<RenderingServer> m_renderingServer;
   std::unique_ptr<IWindow> m_ptr;
+  WindowType m_type;
+  bool m_shouldClose;
 
 public:
-  Window(const std::shared_ptr<RenderingServer> &server, _V3D_WINDOW_ARGS);
+  explicit Window(WindowType type, int width, int height,
+                  const std::string &title);
   ~Window() override = default;
+
+  [[nodiscard]] bool shouldClose() const;
 
   void pollEvents() override;
   void destroy() override;

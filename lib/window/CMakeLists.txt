@@ -1,4 +1,6 @@
 add_library(viewport_window STATIC
+  Window.cpp
+  Window.hpp
   RenderingServer.hpp
   RenderingServer.cpp
   Interface/IWindow.hpp
@@ -15,4 +17,5 @@ target_include_directories(viewport_window PUBLIC
 
 target_link_libraries(viewport_window PRIVATE
   viewport_core
+  glfw
 )

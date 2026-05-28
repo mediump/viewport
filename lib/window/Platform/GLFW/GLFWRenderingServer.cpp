@@ -1,11 +1,23 @@
 #include "GLFWRenderingServer.hpp"
 
-V3D::Private::GLFWRenderingServer::GLFWRenderingServer() {}
+#include "Log/Log.hpp"
+
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+V3D::Private::GLFWRenderingServer::GLFWRenderingServer() = default;
 
 void V3D::Private::GLFWRenderingServer::start() {
-  
+  Log::print("[GLFWRenderingServer]: Startup");
+  glfwInit();
 }
 
-void V3D::Private::GLFWRenderingServer::update() {}
+bool V3D::Private::GLFWRenderingServer::update() {
+  Log::print("[GLFWRenderingServer]: Update");
+  return true;
+}
 
-void V3D::Private::GLFWRenderingServer::shutdown() {}
+void V3D::Private::GLFWRenderingServer::shutdown() {
+  Log::print("[GLFWRenderingServer]: Shutdown");
+  glfwTerminate();
+}

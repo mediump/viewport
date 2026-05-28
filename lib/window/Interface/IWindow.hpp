@@ -3,6 +3,7 @@
 #include "Interface/IContextObject.hpp"
 
 #include <string>
+#include <utility>
 
 namespace V3D {
 
@@ -13,12 +14,14 @@ protected:
   std::string m_title;
 
 public:
-  IWindow(int width, int height, const std::string &title)
-      : m_width(width), m_height(height), m_title(title) {}
+  IWindow(const int width, const int height, std::string title)
+      : m_width(width), m_height(height), m_title(std::move(title)) {}
   ~IWindow() override = default;
 
-  void pollEvents() override;
-  void destroy() override;
+  virtual bool shouldClose() = 0;
+
+  void pollEvents() override = 0;
+  void destroy() override = 0;
 };
 
 } // namespace V3D

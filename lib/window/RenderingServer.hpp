@@ -3,20 +3,29 @@
 #include "Interface/IServer.hpp"
 #include "Objects/WindowObjects.hpp"
 
+#include <memory>
 #include <vector>
 
 namespace V3D {
 
-class RenderingServer : public IServer {
-  WindowType m_windowType;
+class Window;
+
+class RenderingServer : public IServer
+{
+  WindowType m_windowType = WindowType_Headless;
+  std::unique_ptr<IServer> m_server = nullptr;
+  std::vector<std::shared_ptr<Window>> m_windows;
 
 public:
-  RenderingServer(WindowType type);
+  explicit RenderingServer(WindowType type);
   ~RenderingServer() override = default;
 
   void start() override;
-  void update() override;
+  bool update() override;
   void shutdown() override;
+
+  std::shared_ptr<Window> createWindow(int width, int height,
+                                       const std::string &title);
 };
 
 }

@@ -11,7 +11,7 @@ public:
   ~GLFWRenderingServer() override = default;
 
   void start() override;
-  void update() override;
+  bool update() override;
   void shutdown() override;
 };
 
