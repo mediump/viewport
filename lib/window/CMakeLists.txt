@@ -1,6 +1,8 @@
 add_library(viewport_window STATIC
-  Window.cpp
   Window.hpp
+  Window.cpp
+  WindowManager.hpp
+  WindowManager.cpp
   RenderingServer.hpp
   RenderingServer.cpp
   Interface/IWindow.hpp

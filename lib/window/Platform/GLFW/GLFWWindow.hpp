@@ -15,7 +15,7 @@ public:
 
   bool shouldClose() override;
 
-  void pollEvents() override;
+  void update() override;
   void destroy() override;
 };
 

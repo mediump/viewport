@@ -6,6 +6,7 @@ public:
   IContextObject() = default;
   virtual ~IContextObject() = default;
 
-  virtual void pollEvents() = 0;
-  virtual void destroy() = 0;
+  virtual void init() {};
+  virtual void update() {}
+  virtual void destroy() {};
 };

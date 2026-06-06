@@ -5,19 +5,51 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
-V3D::Private::GLFWRenderingServer::GLFWRenderingServer() = default;
+using namespace V3D::Private;
 
-void V3D::Private::GLFWRenderingServer::start() {
+/*
+  GLFWRenderingServer
+*/
+
+void GLFWRenderingServer::start()
+{
   Log::print("[GLFWRenderingServer]: Startup");
   glfwInit();
 }
 
-bool V3D::Private::GLFWRenderingServer::update() {
+bool GLFWRenderingServer::update()
+{
   Log::print("[GLFWRenderingServer]: Update");
   return true;
 }
 
-void V3D::Private::GLFWRenderingServer::shutdown() {
+void GLFWRenderingServer::shutdown()
+{
   Log::print("[GLFWRenderingServer]: Shutdown");
   glfwTerminate();
+}
+
+/*
+  GLFWVulkanServer
+*/
+
+void GLFWVulkanServer::start() {}
+
+bool GLFWVulkanServer::update() {}
+
+void GLFWVulkanServer::shutdown() {}
+
+std::vector<const char *> GLFWVulkanServer::getRequiredExtensions()
+{
+  uint32_t glfw_extension_count = 0;
+  const char **glfw_extensions;
+
+  glfw_extensions = glfwGetRequiredInstanceExtensions(&glfw_extension_count);
+  std::vector<const char *> out_extensions(glfw_extension_count);
+
+  for (uint32_t i = 0; i < glfw_extension_count; i++) {
+    out_extensions[i] = glfw_extensions[i];
+  }
+
+  return out_extensions;
 }

@@ -24,8 +24,13 @@ public:
   bool update() override;
   void shutdown() override;
 
-  std::shared_ptr<Window> createWindow(int width, int height,
+  std::shared_ptr<Window> createWindow(int width,
+                                       int height,
                                        const std::string &title);
 };
+
+// namespace Private {
+//   class RenderingServerPrivate()
+// }
 
 }

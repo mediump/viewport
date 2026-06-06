@@ -5,26 +5,31 @@
 
 using namespace V3D;
 
-Window::Window(const WindowType type, int width, int height, const std::string& title)
-  : m_type(type), m_shouldClose(false)
+Window::Window(const WindowType type,
+               int width,
+               int height,
+               const std::string &title)
+  : m_type(type)
+  , m_shouldClose(false)
 {
-  switch (m_type)
-  {
-  case (WindowType_GLFW):
-    m_ptr = std::make_unique<Private::GLFWWindow>(width, height, title);
-    break;
-  default: break;
+  switch (m_type) {
+    case (WindowType_Normal):
+      m_ptr = std::make_unique<Private::GLFWWindow>(width, height, title);
+      break;
+    default:
+      break;
   }
 }
 
-bool Window::shouldClose() const {
+bool Window::shouldClose() const
+{
   return m_ptr->shouldClose();
 }
 
-void Window::pollEvents()
+void Window::update()
 {
   if (m_ptr) {
-    m_ptr->pollEvents();
+    m_ptr->update();
   }
 }
 

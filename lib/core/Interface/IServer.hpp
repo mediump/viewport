@@ -5,7 +5,6 @@ namespace V3D {
 /* Manages a runtime context */
 class IServer {
 public:
-  IServer() = default;
   virtual ~IServer() = default;
 
   virtual void start() = 0;

@@ -29,7 +29,7 @@ public:
 
   [[nodiscard]] bool shouldClose() const;
 
-  void pollEvents() override;
+  void update() override;
   void destroy() override;
 };
 

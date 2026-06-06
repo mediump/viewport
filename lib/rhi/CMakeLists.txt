@@ -1,18 +1,23 @@
+add_subdirectory(Platform/Vulkan)
+
 add_library(viewport_rhi STATIC
-  Interface/IBufferView.hpp  
-  Interface/IBufferView.cpp
+  Interface/IBufferView.hpp
   Interface/IDeviceContext.hpp
-  Interface/IDeviceContext.cpp
   Interface/IPipelineState.hpp
-  Interface/IPipelineState.cpp
   Interface/IRenderDevice.hpp
-  Interface/IRenderDevice.cpp
   Interface/IShaderResourceBinding.hpp
-  Interface/IShaderResourceBinding.cpp
   Interface/ISwapChain.hpp
-  Interface/ISwapChain.cpp
   Interface/ITextureView.hpp
-  Interface/ITextureView.cpp
+  Interface/ITexture.hpp
+  Interface/IBuffer.hpp
+  Interface/IShader.hpp
+  Interface/IResourceAllocator.hpp
+  Objects/PlatformObjects.hpp
+)
+set_target_properties(viewport_rhi PROPERTIES LINKER_LANGUAGE CXX)
+
+target_link_libraries(viewport_rhi PRIVATE
+  v3d_vulkan_rhi
 )
 
 target_include_directories(viewport_rhi PUBLIC

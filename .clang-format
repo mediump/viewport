@@ -1,8 +1,11 @@
 ---
 Language: Cpp
 BasedOnStyle: Mozilla
+ColumnLimit: 80
 PointerAlignment: Right
 TabWidth: 2
 AlignEscapedNewlines: LeftWithLastLine
-AlwaysBreakAfterReturnType: false
+BreakAfterReturnType: Automatic
+AlignAfterOpenBracket: Align
+PenaltyBreakAssignment: 100
 ...

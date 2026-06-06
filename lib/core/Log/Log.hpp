@@ -7,7 +7,9 @@
 #define V3D_DEFAULT_LOG_PATTERN                                                \
   "[%H:%M:%S %z] [%n] [%^---%L---%$] [thread %t] %v"
 
-#define _V3D_VARG_TEMPLATE(Args) template <typename... Args>
+#define V3D_VARG_TEMPLATE(Args) template <typename... Args>
+
+#define V3D_EXIT(code) exit(code)
 
 namespace V3D {
 
@@ -24,19 +26,19 @@ private:
   Log() = default;
 
 public:
-  _V3D_VARG_TEMPLATE(Args)
+  V3D_VARG_TEMPLATE(Args)
   static void print(const char *fmt, Args... args)
   {
     Log::getSingleton()->log(LogLevel_Info, fmt, args...);
   }
 
-  _V3D_VARG_TEMPLATE(Args)
+  V3D_VARG_TEMPLATE(Args)
   static void warn(const char *fmt, Args... args)
   {
     Log::getSingleton()->log(LogLevel_Warn, fmt, args...);
   }
 
-  _V3D_VARG_TEMPLATE(Args)
+  V3D_VARG_TEMPLATE(Args)
   static void error(const char *fmt, Args... args)
   {
     Log::getSingleton()->log(LogLevel_Error, fmt, args...);
@@ -58,7 +60,7 @@ private:
     }
   }
 
-  _V3D_VARG_TEMPLATE(Args)
+  V3D_VARG_TEMPLATE(Args)
   void log(LogLevel level, const char *fmt, Args... args)
   {
     spdlog::log(get_level(level), fmt, args...);

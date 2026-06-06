@@ -5,24 +5,28 @@
 
 using namespace V3D;
 
-RenderingServer::RenderingServer(const WindowType type) : m_windowType(type) {
+RenderingServer::RenderingServer(const WindowType type)
+  : m_windowType(type)
+{
   switch (m_windowType) {
-  case (WindowType_GLFW):
-    m_server = std::make_unique<Private::GLFWRenderingServer>();
-    break;
-  default:
-    break;
+    case (WindowType_Normal):
+      m_server = std::make_unique<Private::GLFWVulkanServer>();
+      break;
+    default:
+      break;
   }
 }
 
-void RenderingServer::start() {
+void RenderingServer::start()
+{
   if (!m_server) {
     return;
   }
   m_server->start();
 }
 
-bool RenderingServer::update() {
+bool RenderingServer::update()
+{
   if (!m_server) {
     return false;
   }
@@ -32,7 +36,7 @@ bool RenderingServer::update() {
       (*it)->destroy();
       it = m_windows.erase(it);
     } else {
-      (*it)->pollEvents();
+      (*it)->update();
       ++it;
     }
   }
@@ -41,15 +45,18 @@ bool RenderingServer::update() {
   return !m_windows.empty();
 }
 
-void RenderingServer::shutdown() {
+void RenderingServer::shutdown()
+{
   if (!m_server) {
     return;
   }
   m_server->shutdown();
 }
 
-std::shared_ptr<Window>
-RenderingServer::createWindow(int width, int height, const std::string &title) {
+std::shared_ptr<Window> RenderingServer::createWindow(int width,
+                                                      int height,
+                                                      const std::string &title)
+{
   auto window = std::make_shared<Window>(m_windowType, width, height, title);
   m_windows.emplace_back(window);
   return window;

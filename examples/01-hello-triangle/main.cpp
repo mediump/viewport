@@ -3,11 +3,12 @@
 #include "Log/Log.hpp"
 #include "RenderingServer.hpp"
 
-int main() {
+int main()
+{
   V3D::Log::print("Example startup");
 
   const auto renderingServer =
-      std::make_unique<V3D::RenderingServer>(V3D::WindowType_GLFW);
+    std::make_unique<V3D::RenderingServer>(V3D::WindowType_Normal);
 
   renderingServer->start();
   renderingServer->createWindow(256, 256, "Test Window");
