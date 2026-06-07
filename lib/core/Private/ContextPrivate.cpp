@@ -11,7 +11,7 @@ ContextPrivate::ContextPrivate(const Settings &settings)
 {
 }
 
-void ContextPrivate::init() {
+void ContextPrivate::onInit() {
     m_windowManager = std::make_unique<WindowManager>(this);
     m_windowManager->init();
 
@@ -19,12 +19,12 @@ void ContextPrivate::init() {
     m_scene->init();
 }
 
-void ContextPrivate::update() {
+void ContextPrivate::onUpdate() {
     m_windowManager->update();
     m_scene->update();
 }
 
-void ContextPrivate::destroy() {
+void ContextPrivate::onDestroy() {
     m_windowManager->destroy();
     m_windowManager.reset();
 

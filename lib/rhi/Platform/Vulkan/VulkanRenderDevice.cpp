@@ -15,15 +15,15 @@ VulkanRenderDevice::VulkanRenderDevice(const RenderDeviceSettings &settings)
 {
 }
 
-void VulkanRenderDevice::init()
+void VulkanRenderDevice::onInit()
 {
   Log::print("[Vulkan]: Creating render device...");
   create_instance();
 }
 
-void VulkanRenderDevice::update() {}
+void VulkanRenderDevice::onUpdate() {}
 
-void VulkanRenderDevice::destroy()
+void VulkanRenderDevice::onDestroy()
 {
   vkDestroyInstance(m_instance, nullptr);
 }

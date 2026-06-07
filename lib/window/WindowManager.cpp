@@ -7,8 +7,8 @@ V3D::WindowManager::WindowManager(
 {
 }
 
-void V3D::WindowManager::init() {}
+void V3D::WindowManager::onInit() {}
 
-void V3D::WindowManager::update() {}
+void V3D::WindowManager::onUpdate() {}
 
-void V3D::WindowManager::destroy() {}
+void V3D::WindowManager::onDestroy() {}

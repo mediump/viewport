@@ -10,15 +10,15 @@ namespace V3D {
 
 class ContextPrivate;
 
-class Context : IContextObject
+class Context : public IContextObject
 {
 public:
   Context(const Settings &settings);
   ~Context() = default;
 
-  void init() override;
-  void update() override;
-  void destroy() override;
+  void onInit() override;
+  void onUpdate() override;
+  void onDestroy() override;
 
   [[nodiscard]] Settings settings();
   [[nodiscard]] bool shouldClose();

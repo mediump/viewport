@@ -26,14 +26,21 @@ bool Window::shouldClose() const
   return m_ptr->shouldClose();
 }
 
-void Window::update()
+void Window::onInit() 
+{
+  if (m_ptr) {
+    m_ptr->init();
+  }
+}
+
+void Window::onUpdate()
 {
   if (m_ptr) {
     m_ptr->update();
   }
 }
 
-void Window::destroy()
+void Window::onDestroy()
 {
   if (m_ptr) {
     m_ptr->destroy();

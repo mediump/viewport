@@ -10,12 +10,14 @@ TEST_CASE("App lifecycle")
 
     auto ctx = std::make_unique<V3D::Context>(settings);
 
+    REQUIRE_FALSE(ctx->isAlive());
     REQUIRE(ctx->settings() == settings);
     REQUIRE(ctx->windowManager() == nullptr);
     REQUIRE(ctx->scene() == nullptr);
 
     ctx->init();
 
+    REQUIRE(ctx->isAlive());
     REQUIRE(ctx->settings() == settings);
     REQUIRE(ctx->windowManager() != nullptr);
     REQUIRE(ctx->scene() != nullptr);

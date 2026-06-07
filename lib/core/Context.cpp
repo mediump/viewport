@@ -10,15 +10,15 @@ Context::Context(const Settings &settings)
 {
 }
 
-void Context::init() {
+void Context::onInit() {
     m_pImpl->init();
 }
 
-void Context::update() {
+void Context::onUpdate() {
     m_pImpl->update();
 }
 
-void Context::destroy() {
+void Context::onDestroy() {
     m_pImpl->destroy();
     m_pImpl.reset();
 }

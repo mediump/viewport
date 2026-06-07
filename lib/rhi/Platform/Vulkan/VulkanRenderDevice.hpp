@@ -16,9 +16,9 @@ public:
   explicit VulkanRenderDevice(const RenderDeviceSettings& settings);
   ~VulkanRenderDevice() override = default;
 
-  void init() override;
-  void update() override;
-  void destroy() override;
+  void onInit() override;
+  void onUpdate() override;
+  void onDestroy() override;
 
 private:
   void create_instance();

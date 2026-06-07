@@ -29,8 +29,9 @@ public:
 
   [[nodiscard]] bool shouldClose() const;
 
-  void update() override;
-  void destroy() override;
+  void onInit() override;
+  void onUpdate() override;
+  void onDestroy() override;
 };
 
 } // namespace V3D

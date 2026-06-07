@@ -2,8 +2,8 @@
 
 using namespace V3D;
 
-void Scene::init() {}
+void Scene::onInit() {}
 
-void Scene::update() {}
+void Scene::onUpdate() {}
 
-void Scene::destroy() {}
+void Scene::onDestroy() {}
