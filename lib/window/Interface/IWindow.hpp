@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Interface/IContextObject.hpp"
+#include "Objects/Math.hpp"
 
 #include <string>
 #include <utility>

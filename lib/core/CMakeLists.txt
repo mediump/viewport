@@ -9,6 +9,7 @@ add_library(viewport_core STATIC
   Log/Log.cpp
   Objects/ErrorCodes.hpp
   Objects/Settings.hpp
+  Objects/Math.hpp
 )
 
 target_include_directories(viewport_core PUBLIC
