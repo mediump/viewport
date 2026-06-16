@@ -13,7 +13,7 @@ class VulkanRenderDevice : public IRenderDevice
   VkInstance m_instance = nullptr;
 
 public:
-  explicit VulkanRenderDevice(const RenderDeviceSettings& settings);
+  explicit VulkanRenderDevice(const RenderDeviceSettings &settings);
   ~VulkanRenderDevice() override = default;
 
   void onInit() override;
@@ -25,7 +25,13 @@ private:
   static void get_glfw_extensions(VkInstanceCreateInfo *create_info);
 
   bool check_validation_layer_support();
-  std::vector<const char*> get_required_extensions();
+  std::vector<const char *> get_required_extensions();
+
+  static VKAPI_ATTR VkBool32 VKAPI_CALL
+  debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
+                VkDebugUtilsMessageTypeFlagsEXT messageType,
+                const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData,
+                void *pUserData);
 };
 
 }

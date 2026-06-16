@@ -126,5 +126,34 @@ bool VulkanRenderDevice::check_validation_layer_support()
 std::vector<const char *> VulkanRenderDevice::get_required_extensions()
 {
   uint32_t glfw_extension_count = 0;
-  throw FUNCTION_NOT_IMPLEMENTED;
+  const char **glfw_extensions;
+  glfw_exensions = glfwGetRequiredInstanceExtensions(&glfw_extension_count);
+
+  std::vector<const char *> extensions(glfw_extensions,
+                                       glfw_extensions + glfw_extension_count);
+
+#ifdef V3D_DEBUG
+  extensions.emplace_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+#endif
+
+  return extensions;
+}
+
+VKAPI_ATTR VkBool32 VKAPI_CALL VulkanRenderDevice::debugCallback(
+  VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
+  VkDebugUtilsMessageTypeFlagsEXT messageType,
+  const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData,
+  void *pUserData)
+{
+  if (messageSeverity < VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) {
+#ifdef V3D_DEBUG
+    Log::print("[V3D::RenderDevice] Validation layer info: {}",
+               pCallbackData->pMessage);
+#endif
+    return;
+  }
+
+  Log::error("[V3D::RenderDevice] Validation layer error: {}",
+             pCallbackData->pMessage);
+  return VK_FALSE;
 }

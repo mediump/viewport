@@ -9,6 +9,17 @@
 #define V3D_VERSION_PATCH(version) ((version) & 0xFF)
 // ---
 
+// Linux session manager
+#define V3D_WAYLAND_DISPLAY 0
+#define V3D_X11_DISPLAY 0
+
+#if defined(WAYLAND_DISPLAY)
+  #define V3D_WAYLAND_DISPLAY 1
+#elif defined(X11)
+  #define V3D_X11_DISPLAY 1
+#endif
+// ---
+
 namespace V3D {
 
 enum GraphicsPlatform {

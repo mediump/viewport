@@ -32,9 +32,9 @@ public:
   }
   ~IRenderDevice() override = default;
 
-  void onInit() override;
-  void onUpdate() override;
-  void onDestroy() override;
+  void onInit() override {};
+  void onUpdate() override {};
+  void onDestroy() override {};
 };
 
 }

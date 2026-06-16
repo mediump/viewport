@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "Run Tests",
-            "command": "./build/tests/viewport_tests",
+            "command": "${workspaceFolder}/build/tests/v3d_tests.exe",
             "problemMatcher": [
                 "$gcc"
             ]
